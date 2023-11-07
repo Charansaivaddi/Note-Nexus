@@ -1,27 +1,38 @@
 .menu_bar {
-    background-color: white;
-    color:rgb(79, 77, 77);
-    padding-left: 20px;
-    border:none;
+    background-color: #f4f4f4;
+    color: rgb(79, 77, 77);
+    padding-left: 20.1px;
+    border: none;
 }
 
-#home,#mk_msc,#abt_us,#sign_up,#login,#files,#tutor{
+#home, #mk_msc, #abt_us, #sign_up, #login, #files, #tutor {
     cursor: pointer;
 }
 
-#home:hover,#mk_msc:hover,#abt_us:hover,#sign_up:hover,#login:hover,#files:hover,#tutor:hover{
-    color:black;  
+#home:hover, #mk_msc:hover, #abt_us:hover, #sign_up:hover, #login:hover, #files:hover, #tutor:hover {
+    color: black;
+    background-color: #f4f4f4;
 }
 
-#prod_name:active,#home:active,#mk_msc:active,#abt_us:active,#sign_up:active,#login:active,#files:active,#tutor:active{
-    color:transparent;   
+#home:active, #mk_msc:active, #abt_us:active, #sign_up:active, #login:active, #files:active, #tutor:active {
+    color: transparent;
 }
 
-#body{
-    background-image: url("bgi.png");
+#body {
     background-size: cover;
     margin: 0;
     padding: 0;
-    height: 100rem;
+    height: 50rem;
     background-repeat: no-repeat;
+}
+
+#prod_name {
+    font-size: 52px;
+    text-align: center;
+    padding-top: 200px;
+}
+
+#abt_us{
+    color: #4f4d4d;
+    text-decoration: none;
 }
