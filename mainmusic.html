@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Music - Note Nexus</title>
+    <link rel="stylesheet" href="front_end.css"/>
+    <style>
+        .piano-key {
+            display: inline-block;
+            width: 50px;
+            height: 150px;
+            background-color: #f4f4f4;
+            margin: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <fieldset class="menu_bar">
+            <h3>
+                <a href="front_end.html#body">Home</a>&nbsp;&nbsp;&nbsp;
+                <a href="#body">Make Music</a>&nbsp;&nbsp;&nbsp;
+                <a href="yourfiles.html">Your Files</a>&nbsp;&nbsp;&nbsp;
+                <a href="tutorial.html">Tutorial</a>&nbsp;&nbsp;&nbsp;
+                <a href="signup.html">Sign Up</a>&nbsp;&nbsp;&nbsp;
+                <a href="login.html">Login</a>&nbsp;&nbsp;&nbsp;
+                <a href="aboutus.html">About Us</a>
+            </h3>
+        </fieldset>
+    </div>
+    <hr>
+    <section id="body">
+        <h2>Make Music</h2>
+        <div class="piano-key" onclick="playSound('C')"></div>
+        <div class="piano-key" onclick="playSound('D')"></div>
+        <div class="piano-key" onclick="playSound('E')"></div>
+        <div class="piano-key" onclick="playSound('F')"></div>
+        <div class="piano-key" onclick="playSound('G')"></div>
+        <div class="piano-key" onclick="playSound('A')"></div>
+        <div class="piano-key" onclick="playSound('B')"></div>
+    </section>
+
+    <script>
+        function playSound(note) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const frequencies = {
+                'C': 261.63,
+                'D': 293.66,
+                'E': 329.63,
+                'F': 349.23,
+                'G': 392.00,
+                'A': 440.00,
+                'B': 493.88,
+            };
+            oscillator.frequency.setValueAtTime(frequencies[note], audioContext.currentTime);
+            oscillator.connect(audioContext.destination);
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+    </script>
+</body>
+</html>
+
