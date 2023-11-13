@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Note Nexus</title>
+    <link rel="stylesheet" href="front_end.css"/>
+</head>
+<body>
+    <div>
+        <fieldset class="menu_bar">
+            <h3>
+                <a href="front_end.html#body">Home</a>&nbsp;&nbsp;&nbsp;
+                <a href="mainmusic.html">Make Music</a>&nbsp;&nbsp;&nbsp;
+                <a href="yourfiles.html">Your Files</a>&nbsp;&nbsp;&nbsp;
+                <a href="tutorial.html">Tutorial</a>&nbsp;&nbsp;&nbsp;
+                <a href="signup.html">Sign Up</a>&nbsp;&nbsp;&nbsp;
+                <a href="login.html">Login</a>&nbsp;&nbsp;&nbsp;
+                <a href="aboutus.html">About Us</a>
+            </h3>
+        </fieldset>
+    </div>
+    <hr>
+    <section id="login_section">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return loginUser()" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <button type="submit">Login</button><br><br>
+        </form>
+
+        <script>
+            function loginUser() {
+                alert("Login successful!");
+                window.location.href = "front_end.html#body";
+                return false;
+            }
+        </script>
+    </section>
+</body>
+</html>
