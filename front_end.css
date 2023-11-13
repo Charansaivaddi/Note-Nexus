@@ -5,6 +5,17 @@
     border: none;
 }
 
+.menu_bar a {
+    text-decoration: none;
+    color: rgb(79, 77, 77);
+    padding: 10px;
+}
+
+.menu_bar a:hover {
+    color: black;
+    background-color: #f4f4f4;
+}
+
 #home, #mk_msc, #abt_us, #sign_up, #login, #files, #tutor {
     cursor: pointer;
 }
@@ -19,11 +30,11 @@
 }
 
 #body {
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    height: 50rem;
-    background-repeat: no-repeat;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
 #prod_name {
@@ -32,7 +43,14 @@
     padding-top: 200px;
 }
 
-#abt_us{
+#abt_us {
     color: #4f4d4d;
     text-decoration: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
 }
