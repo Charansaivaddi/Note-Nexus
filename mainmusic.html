@@ -41,27 +41,73 @@
         <div class="piano-key" onclick="playSound('G')"></div>
         <div class="piano-key" onclick="playSound('A')"></div>
         <div class="piano-key" onclick="playSound('B')"></div>
-    </section>
 
-    <script>
-        function playSound(note) {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioContext.createOscillator();
-            const frequencies = {
-                'C': 261.63,
-                'D': 293.66,
-                'E': 329.63,
-                'F': 349.23,
-                'G': 392.00,
-                'A': 440.00,
-                'B': 493.88,
-            };
-            oscillator.frequency.setValueAtTime(frequencies[note], audioContext.currentTime);
-            oscillator.connect(audioContext.destination);
-            oscillator.start();
-            oscillator.stop(audioContext.currentTime + 0.5);
-        }
-    </script>
+        <button onclick="startRecording()">Start Recording</button>
+        <button onclick="stopRecording()">Stop Recording</button>
+        <audio id="audioPlayer" controls></audio>
+
+        <script>
+            let mediaRecorder;
+            let chunks = [];
+
+            function startRecording() {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(stream => {
+                        mediaRecorder = new MediaRecorder(stream);
+                        mediaRecorder.ondataavailable = event => {
+                            if (event.data.size > 0) {
+                                chunks.push(event.data);
+                            }
+                        };
+                        mediaRecorder.onstop = () => {
+                            const blob = new Blob(chunks, { type: 'audio/wav' });
+                            const url = URL.createObjectURL(blob);
+                            document.getElementById('audioPlayer').src = url;
+                            uploadRecording(blob);
+                        };
+                        mediaRecorder.start();
+                    })
+                    .catch(error => console.error('Error accessing microphone:', error));
+            }
+
+            function stopRecording() {
+                if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                    mediaRecorder.stop();
+                }
+            }
+
+            function playSound(note) {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const frequencies = {
+                    'C': 261.63,
+                    'D': 293.66,
+                    'E': 329.63,
+                    'F': 349.23,
+                    'G': 392.00,
+                    'A': 440.00,
+                    'B': 493.88,
+                };
+                oscillator.frequency.setValueAtTime(frequencies[note], audioContext.currentTime);
+                oscillator.connect(audioContext.destination);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.5);
+            }
+            
+            function uploadRecording(blob) {
+                const formData = new FormData();
+                formData.append('audio', blob);
+
+                fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(message => console.log(message))
+                .catch(error => console.error('Error uploading recording:', error));
+            }
+        </script>
+    </section>
 </body>
 </html>
 

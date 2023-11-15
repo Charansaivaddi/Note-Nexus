@@ -1,38 +1,25 @@
 .menu_bar {
-    background-color: #f4f4f4;
-    color: rgb(79, 77, 77);
+    background-color: #3498db;
+    color: #fff;
     padding-left: 20.1px;
     border: none;
 }
 
 .menu_bar a {
     text-decoration: none;
-    color: rgb(79, 77, 77);
+    color: #fff;
     padding: 10px;
 }
 
 .menu_bar a:hover {
-    color: black;
-    background-color: #f4f4f4;
-}
-
-#home, #mk_msc, #abt_us, #sign_up, #login, #files, #tutor {
-    cursor: pointer;
-}
-
-#home:hover, #mk_msc:hover, #abt_us:hover, #sign_up:hover, #login:hover, #files:hover, #tutor:hover {
-    color: black;
-    background-color: #f4f4f4;
-}
-
-#home:active, #mk_msc:active, #abt_us:active, #sign_up:active, #login:active, #files:active, #tutor:active {
-    color: transparent;
+    color: #3498db;
+    background-color: #fff;
 }
 
 #body {
     margin: 20px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ecf0f1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
@@ -41,16 +28,39 @@
     font-size: 52px;
     text-align: center;
     padding-top: 200px;
+    color: #e74c3c;
 }
 
-#abt_us {
-    color: #4f4d4d;
-    text-decoration: none;
+#target_section_id {
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+#signup_section, #login_section {
+    background-color: #f39c12;
+    color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.piano-key {
+    display: inline-block;
+    width: 50px;
+    height: 150px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.piano-key:nth-child(odd) {
+    background-color: #000;
+    border: 1px solid #444;
+}
+
+.piano-key:nth-child(even) {
+    background-color: #fff;
+    border: 1px solid #ccc;
 }
